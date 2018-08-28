@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Website - Shopping</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src ="DJ_Duehr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js"></script>
+    <link rel="stylesheet" href="DJ_Duehr.css">
+  </head>
+  <body>
+  	<div id="container">
+  		<ul class="nav">
+  			<li><a href="#home">Home</a></li>
+  			<li><a href="#shop">Shop</a></li>
+        <li><a href="#about">About Us</a></li>
+  			<li><a href="#checkOut">Check Out</a></li>
+  		</ul>
+  		<div id="home">
+        <h1>Home</h1>
+        <p> This is a website by Metroid fans for Metroid fans. We sell fan made products custom made from other fans and redistribute it to you for cheap. Products include:
+        <BR> - Custom made figurines for the hardcore fans.
+        <BR> - Hand sewn plushies made with love
+        <BR> - Custom art prints from talented artists
+        <BR> - ROM hacks printed onto cartridges
+        <BR> - More to come as we expand!
+    	</div>
+      <div id="input">
+  		<h1>Input</h1>
+        <p> Click the products you want to purchase. </p>
+        <div class='group'>
+        <form name='product' id='product'>
+          <input type=hidden name='select' value=""><br>
+          Statue <input type=checkbox name='select' id=vradio><input type="numeric" id=statue><br>
+          Plushie <input type=checkbox name='select' id=cradio><input type="numeric" id=plushie><br>
+          Poster <input type=checkbox name='select' id=rradio><input type="numeric" id=poster><br>
+          Games <input type=checkbox name='select' id=pradio><input type="numeric" id=game><br>
+          <input type="Button" value='Submit' id=Submit>
+        </form>
+        </div>
+      </div>
+  	</div>
+  </body>
+    <footer>
+      Copyright &copy; 2018 - Duehr;
+
+  </body>
+</html>
