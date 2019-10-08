@@ -2,7 +2,7 @@ package springxml.beans;
 
 import springxml.beans.Order;
 //
-public class User extends Order {
+public class User {
 
         // Add new fields for email address and team name
         private String name;

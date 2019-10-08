@@ -11,7 +11,7 @@ public class SpringApp {
 
         // retrieve bean from Spring container
         User theUser = context.getBean("myUser", User.class);
-        Order theOrder = context.getBean("myOrder", User.class);
+        Order theOrder = context.getBean("myOrder", Order.class);
 
         // call methods on the bean
         System.out.println(theOrder.getUser());
