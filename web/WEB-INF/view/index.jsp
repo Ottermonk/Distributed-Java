@@ -11,10 +11,10 @@
     <meta charset="utf-8">
     <title>Website - Shopping</title>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src ="WEB-INF/resources/js/DJ_Duehr.js"></script>
+    <script type="text/javascript" src ="resources/js/DJ_Duehr.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js"></script>
-    <link rel="stylesheet" href="WEB-INF/resources/css/DJ_Duehr.css">
+    <link rel="stylesheet" href="resources/css/DJ_Duehr.css">
 </head>
 <body>
 <nav class="navigation">
