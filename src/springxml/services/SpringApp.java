@@ -7,7 +7,7 @@ import springxml.beans.Order;
 public class SpringApp {
     public static void main(String[] args) {
         // load the Spring config file
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
 
         // retrieve bean from Spring container
         User theUser = context.getBean("myUser", User.class);

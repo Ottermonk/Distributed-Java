@@ -1,7 +1,7 @@
 
 @charset "utf-8";
 body {
-		background-attachment: fixed;
+	background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -33,7 +33,7 @@ ul.nav li a:focus {
 }
 
 #container > div {
-  background-image: url("background.png");
+  background-image: url("../img/background.png");
 	background-repeat: repeat;
 	padding: 5px;
 	margin-top: 3px;
@@ -46,8 +46,8 @@ ul.nav li a:focus {
 
 #home {
 	background-color: #cccccc;
-  margin: 0;
-  padding: 0;
+  	margin: 0;
+  	padding: 0;
 }
 
 #input {
