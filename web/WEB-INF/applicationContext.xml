@@ -18,23 +18,4 @@
     </bean>
 
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"></mvc:resources>
-
-    <!-- Load properties file: sport.properties -->
-    <context:property-placeholder location="classpath:springxml/Order.properties"/>
-
-    <!-- Define your beans here -->
-    <bean id="myUser" class="springxml.beans.User">
-
-        <!-- Inject literal values from properties file -->
-        <property name="name" value="${c1.name}"/>
-        <property name="emailAddress" value="${c1.email}"/>
-        <property name="phone" value="${c1.phone}"/>
-
-    </bean>
-
-    <bean id="myOrder" class="springxml.beans.Order">
-        <!-- Setter injection -->
-        <property name="user" ref="myUser"/>
-
-    </bean>
 </beans>
