@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Apache Derby (Embedded) - DuehrDB" uuid="c72dbf11-db5d-4261-a53d-4cd4fb7803e8">
+    <data-source source="LOCAL" name="Apache Derby (Embedded) - duehrdb" uuid="9e16c77e-2966-444b-9ffc-721a03f3fd5b">
       <driver-ref>derby.embedded</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
-      <jdbc-url>jdbc:derby:$PROJECT_DIR$/lib/DuehrDB</jdbc-url>
+      <jdbc-url>jdbc:derby:$PROJECT_DIR$/duehrdb</jdbc-url>
     </data-source>
   </component>
 </project>

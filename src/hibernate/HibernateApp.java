@@ -1,13 +1,13 @@
 package hibernate;
 
 import hibernate.entity.Customer;
-import hibernate.entity.CustomerOrder;
+import hibernate.entity.LineItem;
+import hibernate.entity.Order;
 import hibernate.entity.Product;
-import hibernate.entity.ProductOrder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class HibernateApp {
@@ -17,8 +17,8 @@ public class HibernateApp {
         factory = new Configuration().configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Product.class)
-                .addAnnotatedClass(CustomerOrder.class)
-                .addAnnotatedClass(ProductOrder.class)
+                .addAnnotatedClass(Order.class)
+                .addAnnotatedClass(LineItem.class)
                 .buildSessionFactory();
     }
 
@@ -26,7 +26,10 @@ public class HibernateApp {
         HibernateApp hibernate = new HibernateApp();
 
         try {
-            hibernate.readProduct(1);
+            Product stuff = hibernate.readProduct(1);
+            hibernate.createCustomers();
+            hibernate.createProducts();
+            hibernate.createOrderForCustomer(stuff, 5);
         } finally {
             hibernate.close();
         }
@@ -41,14 +44,14 @@ public class HibernateApp {
         Customer customer = new Customer("Kyle Duehr", 30, "Ottermonk@gmail.com");
         session.save(customer);
 
-        CustomerOrder order = new CustomerOrder(2);
+        Order order = new Order();
         customer.add(order);
         session.save(order);
 
         session.getTransaction().commit();
     }
 
-    private void readProduct(int product_id) {
+    private Product readProduct(int product_id) {
         Session session = factory.getCurrentSession();
 
         session.beginTransaction();
@@ -56,13 +59,15 @@ public class HibernateApp {
         // Do stuff
         Product aProduct = session.get(Product.class, product_id);
 
-        if (aProduct == null){
+        if (aProduct == null) {
             System.out.println("No Product found for ID " + product_id);
         } else {
             System.out.println(aProduct);
         }
 
         session.getTransaction().commit();
+
+        return aProduct;
     }
 
     private void readCustomer(int customer_id) {
@@ -73,7 +78,7 @@ public class HibernateApp {
         // Do stuff
         Customer aCustomer = session.get(Customer.class, customer_id);
 
-        if (aCustomer == null){
+        if (aCustomer == null) {
             System.out.println("No Customer found for ID " + customer_id);
         } else {
             System.out.println(aCustomer);
@@ -83,7 +88,7 @@ public class HibernateApp {
     }
 
 
-    private void createProducts(int product_id) {
+    private void createProducts() {
         Session session = factory.getCurrentSession();
 
         session.beginTransaction();
@@ -99,7 +104,7 @@ public class HibernateApp {
         session.getTransaction().commit();
     }
 
-    private void createCustomers(int customer_id) {
+    private void createCustomers() {
         Session session = factory.getCurrentSession();
 
         session.beginTransaction();
@@ -129,7 +134,7 @@ public class HibernateApp {
         session.getTransaction().commit();
     }
 
-    private void printProductList(@NotNull List<Product> list) {
+    private void printProductList(List<Product> list) {
         if (list.isEmpty()) {
             System.out.println("No Products in list");
         } else {
@@ -139,15 +144,15 @@ public class HibernateApp {
         }
     }
 
-    private void createOrderForCustomer() {
+    private void createOrderForCustomer(Product product, int quantity) {
         Session session = factory.getCurrentSession();
 
         session.beginTransaction();
 
         // Do stuff
         Customer newCustomer = new Customer("Pineapple", 30, "pineapple@yahoo.com");
-        CustomerOrder newOrder = new CustomerOrder(15);
-        ProductOrder newPOrder = new ProductOrder(2, 3);
+        Order newOrder = new Order();
+        LineItem newPOrder = new LineItem(product.getId(), quantity);
 
         newOrder.add(newPOrder);
         newCustomer.add(newOrder);
@@ -188,7 +193,6 @@ public class HibernateApp {
 
         session.getTransaction().commit();
     }
-
 
 
     private void close() {
