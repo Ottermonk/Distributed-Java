@@ -8,35 +8,20 @@ import java.util.List;
 @Table(name = "Customer")
 
 public class Customer {
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Customer_ID")
-    private List<CustomerOrder> customerOrders;
-
-    public List<CustomerOrder> getCustomerOrders() {
-        return customerOrders;
-    }
-
-    public void setCustomerOrders(List<CustomerOrder> customerOrders) {
-        this.customerOrders = customerOrders;
-    }
-
-    public void add(CustomerOrder tempOrder) {
-        if (customerOrders == null) {
-            customerOrders = new ArrayList<>();
-        }
-        customerOrders.add(tempOrder);
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Customer_ID")
     private int id;
-    @Column(name = "Customer_Name")
+    @Column(name = "Customer_NM")
     private String name;
     @Column(name = "Age")
     private int age;
-    @Column (name = "Email")
+    @Column(name = "Email")
     private String email;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Customer_ID")
+    private List<Order> orders;
 
     public Customer(String name, int age, String email) {
         this.name = name;
@@ -45,6 +30,21 @@ public class Customer {
     }
 
     public Customer() {
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public void add(Order tempOrder) {
+        if (orders == null) {
+            orders = new ArrayList<>();
+        }
+        orders.add(tempOrder);
     }
 
     public int getId() {
