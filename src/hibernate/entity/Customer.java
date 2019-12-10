@@ -1,6 +1,9 @@
 package hibernate.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +34,16 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Customer_ID")
     private int id;
-    @Column(name = "Customer_Name")
+    @NotNull(message = "required")
+    @Size(min = 1, max = 30, message = "1-30 characters")
+    @Column(name = "Customer_NM")
     private String name;
+    @NotNull(message = "required")
+    @Min(value = 1, message = "greater than 0")
     @Column(name = "Age")
-    private int age;
+    private Integer age;
+    @NotNull(message = "required")
+    @Size(min = 1, max = 30, message = "1-30 characters")
     @Column (name = "Email")
     private String email;
 
@@ -63,11 +72,11 @@ public class Customer {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

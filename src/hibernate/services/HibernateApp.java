@@ -1,4 +1,4 @@
-package hibernate;
+package hibernate.services;
 
 import hibernate.entity.Customer;
 import hibernate.entity.CustomerOrder;

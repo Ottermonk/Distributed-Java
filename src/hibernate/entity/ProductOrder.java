@@ -6,6 +6,10 @@ import java.util.List;
 @Entity
 @Table(name = "ProductOrder")
 public class ProductOrder {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lineItemID")
+    private int lineItemID;
     @Column(name = "Order_ID")
     private int Orderid;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -37,6 +41,14 @@ public class ProductOrder {
                 ", Productid=" + productid +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    public int getLineItemID() {
+        return lineItemID;
+    }
+
+    public void setLineItemID(int lineItemID) {
+        this.lineItemID = lineItemID;
     }
 
     public int getOrderid() {

@@ -1,5 +1,7 @@
 package hibernate.entity;
 
+import org.springframework.context.annotation.Primary;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
