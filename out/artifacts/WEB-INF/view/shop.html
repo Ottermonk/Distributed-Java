@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Website - Shopping</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src ="../resources/js/DJ_Duehr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js"></script>
+    <link rel="stylesheet" href="../resources/css/DJ_Duehr.css">
+  </head>
+  <body>
+  <nav class="navigation">
+    <p class="menu-item selected"><a href="home.html">Home</a></p>
+    <p class="menu-item"><a href="about.html">About</a></p>
+    <p class="menu-item"><a href="shop.html">Shop</a></p>
+  </nav>
+  	<div id="container">
+      <div id="input">
+  		<h1>Input</h1>
+        <p> Enter your user data </p>
+          Name <input type="text" name="firstName" required/>
+          Age <input type="number" min="18" max="99" placeholder="18"/>
+          Email <input type="email" />
+          <br>
+          "I have read the user agreement"
+          <input type="checkbox" name="checkbox" value="check" id="agree" required />
+        <br>
+        <p> Click the products you want to purchase. </p>
+        <div class='group'>
+        <form name='product' id='product'>
+          <input type=hidden name='select' value=""><br>
+          Statue ($15.99) <input type=checkbox name='select' id=vradio><input type="numeric" id=statue><br>
+          Plushie ($15.99) <input type=checkbox name='select' id=cradio><input type="numeric" id=plushie><br>
+          Poster ($5.99) <input type=checkbox name='select' id=rradio><input type="numeric" id=poster><br>
+          Games ($59.99) <input type=checkbox name='select' id=pradio><input type="numeric" id=game><br>
+          <input type="Button" value='Submit' id=ShopSubmit>
+        </form>
+        </div>
+        <div class="result">
+
+        </div>
+      </div>
+  	</div>
+  </body>
+    <footer>
+      Copyright &copy; 2018 - Duehr;
+    </footer>
+  </body>
+</html>
