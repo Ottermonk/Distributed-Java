@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security.xsd">
+    <!-- BEGIN SECURITY CONFIGURATION -->
+
+    <security:http use-expressions="true" authentication-manager-ref="myAuthenticationManager" >
+        <security:intercept-url pattern="/customer/admin/**" access="hasRole('Admin')"/>
+        <security:intercept-url pattern="/customer/user/**" access="hasRole('User')"/>
+        <security:intercept-url pattern="/resources/**" access="permitAll()"/>
+        <security:intercept-url pattern="/**" access="permitAll()" />
+
+        <!-- We don't need to write a mapping for "authenticate"
+        Spring understands how to process login if we name everything correctly -->
+        <security:form-login
+                login-page="/showLoginForm"
+                login-processing-url="/authenticate"
+                authentication-failure-url="/showLoginForm?error=true"
+                username-parameter="username"
+                password-parameter="password"
+                default-target-url="/customer/user/list"/>
+        <security:logout logout-url="/logout"
+                         logout-success-url="/showLoginForm?logout=true"/>
+    </security:http>
+
+    <security:authentication-manager id="myAuthenticationManager" >
+        <security:authentication-provider>
+            <security:jdbc-user-service data-source-ref="myDataSource"/>
+            <security:password-encoder ref="bcryptEncoder" />
+<!--            <security:user-service id="myUserService">-->
+<!--                <security:user name="user" password="p" authorities="USER"/>-->
+<!--                <security:user name="admin" password="p" authorities="USER,ADMIN"/>-->
+<!--            </security:user-service>-->
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
     <!-- Support for component scanning -->
     <context:component-scan base-package="springmvc"/>

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="resources/css/DJ_Duehr.css">
 </head>
 <body>
+<%@include file="/WEB-INF/view/includes/header.jsp"%>
 <%--<nav class="navigation">--%>
 <%--    <p class="menu-item selected"><a href="home.html">Home</a></p>--%>
 <%--    <p class="menu-item"><a href="about.html">About</a></p>--%>
@@ -60,5 +61,6 @@
         </tr>
     </table>
 </form:form>
+<%@ include file="/WEB-INF/view/includes/footer.jsp" %>
 </body>
 </html>

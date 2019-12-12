@@ -24,6 +24,7 @@
 <%--    <p class="menu-item"><a href="about.html">About</a></p>--%>
 <%--    <p class="menu-item"><a href="shop.html">Shop</a></p>--%>
 <%--</nav>--%>
+<%@include file="/WEB-INF/view/includes/header.jsp"%>
 <div id="wrapper">
     <div id="header">
         <h2>Shop</h2>
@@ -70,5 +71,6 @@
                 </tr>
             </c:forEach>
         </table>
+        <%@ include file="/WEB-INF/view/includes/footer.jsp" %>
 </body>
 </html>

@@ -37,10 +37,10 @@ public class CustomerController {
     public String deleteCustomer(@RequestParam("Customer_ID") int theId) {
         CustomerService.deleteCustomer(theId);
 
-        return "redirect:/customer/list";
+        return "redirect:/customer/user/list";
     }
 
-    @RequestMapping("/showUpdateCustomerForm")
+    @RequestMapping("/user/showUpdateCustomerForm")
     public String showUpdateDonutForm(@RequestParam("Customer_ID") int theId,
                                       Model theModel) {
         Customer theCustomer = CustomerService.getCustomer(theId);
@@ -50,7 +50,7 @@ public class CustomerController {
         return "form";
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/user/list")
     public String listCustomer(Model theModel) {
         List<Customer> customerList = CustomerService.getCustomer();
 
@@ -59,7 +59,7 @@ public class CustomerController {
         return "list";
     }
 
-    @GetMapping("/showAddCustomerForm")
+    @GetMapping("/user/showAddCustomerForm")
     public String showAddCustomerForm(Model theModel) {
         Customer newCustomer = new Customer();
 
@@ -79,7 +79,7 @@ public class CustomerController {
 
         CustomerService.saveCustomer(theCustomer);
 
-        return "redirect:/customer/list";
+        return "redirect:/customer/user/list";
     }
 
     @InitBinder
